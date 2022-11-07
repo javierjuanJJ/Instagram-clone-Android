@@ -18,7 +18,7 @@ public class LikesActivity extends ParentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         setUI();
 
@@ -29,5 +29,6 @@ public class LikesActivity extends ParentActivity {
         bottomNavigationView = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationView);
         m1(TAG, ACTIVITY_NUM);
+        //setupBottomNavigationView();
     }
 }
