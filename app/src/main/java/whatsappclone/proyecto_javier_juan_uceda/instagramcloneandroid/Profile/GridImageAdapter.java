@@ -19,6 +19,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import java.util.ArrayList;
 
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.SqaureImageView;
 
 class GridImageAdapter extends ArrayAdapter<String> {
 
@@ -38,7 +39,7 @@ class GridImageAdapter extends ArrayAdapter<String> {
     }
 
     private static class ViewHolder{
-        ImageView image;
+        SqaureImageView image;
         ProgressBar mProgressBar;
     }
 

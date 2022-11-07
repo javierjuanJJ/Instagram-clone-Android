@@ -29,6 +29,7 @@ public class ProfileActivity extends ParentActivity {
     private static final int ACTIVITY_NUM = 1;
     private ProgressBar mProgressBar;
     private ImageView profilePhoto;
+    private static final int NUM_GRID_COLUMNS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +101,11 @@ public class ProfileActivity extends ParentActivity {
     }
 
     private void setupImageGrid(ArrayList<String> imgURLs){
-        GridView gridView = (GridView) findViewById(R.id.gridView);
+        GridView gridView = findViewById(R.id.gridView);
+
+        int gridWidth = getResources().getDisplayMetrics().widthPixels;
+        int imageWidth = gridWidth/NUM_GRID_COLUMNS;
+        gridView.setColumnWidth(imageWidth);
 
         GridImageAdapter adapter = new GridImageAdapter(mContext, R.layout.layout_grid_imageview, "", imgURLs);
         gridView.setAdapter(adapter);
