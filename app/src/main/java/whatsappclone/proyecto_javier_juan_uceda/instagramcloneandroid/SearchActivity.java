@@ -1,7 +1,5 @@
 package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,9 +7,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
 
-public class HomeActivity extends ParentActivity {
+public class SearchActivity extends ParentActivity {
 
-    private static final String TAG = HomeActivity.class.getSimpleName();
+    private static final String TAG = SearchActivity.class.getSimpleName();
     private BottomNavigationView bottomNavigationView;
     private static final int ACTIVITY_NUM = 0;
 
