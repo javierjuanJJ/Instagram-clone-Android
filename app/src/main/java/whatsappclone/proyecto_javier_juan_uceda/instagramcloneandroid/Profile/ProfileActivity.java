@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -20,6 +22,7 @@ public class ProfileActivity extends ParentActivity {
     private static final String TAG = ProfileActivity.class.getSimpleName();
     private BottomNavigationView bottomNavigationView;
     private static final int ACTIVITY_NUM = 1;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,10 @@ public class ProfileActivity extends ParentActivity {
     private void setUI() {
         Log.d(TAG, "onCreate: starting.");
         bottomNavigationView = findViewById(R.id.bottomNavViewBar);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.profileProgressBar);
+        mProgressBar.setVisibility(View.GONE);
+
         setupBottomNavigationView(bottomNavigationView);
         m1(TAG, ACTIVITY_NUM);
         setupBottomNavigationView(bottomNavigationView);
