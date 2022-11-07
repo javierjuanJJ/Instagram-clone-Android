@@ -1,5 +1,7 @@
 package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Profile;
 
+import static whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper.setupBottomNavigationView;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -31,8 +33,9 @@ public class ProfileActivity extends ParentActivity {
     private void setUI() {
         Log.d(TAG, "onCreate: starting.");
         bottomNavigationView = findViewById(R.id.bottomNavViewBar);
-        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationView);
+        setupBottomNavigationView(bottomNavigationView);
         m1(TAG, ACTIVITY_NUM);
+        setupBottomNavigationView(bottomNavigationView);
         setupToolbar();
     }
 
