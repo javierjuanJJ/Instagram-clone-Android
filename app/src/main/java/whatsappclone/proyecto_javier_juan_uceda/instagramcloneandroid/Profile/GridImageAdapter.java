@@ -55,7 +55,7 @@ class GridImageAdapter extends ArrayAdapter<String> {
             convertView = mInflater.inflate(layoutResource, parent, false);
             holder = new ViewHolder();
             holder.mProgressBar = (ProgressBar) convertView.findViewById(R.id.gridImageProgressbar);
-            holder.image = (ImageView) convertView.findViewById(R.id.gridImageView);
+            holder.image = convertView.findViewById(R.id.gridImageView);
 
             convertView.setTag(holder);
         }

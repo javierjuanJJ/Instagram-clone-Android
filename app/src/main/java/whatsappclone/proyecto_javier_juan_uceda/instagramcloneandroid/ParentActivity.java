@@ -18,10 +18,13 @@ public class ParentActivity extends AppCompatActivity {
         Log.d(tag, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationView bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
-        Menu menu = bottomNavigationViewEx.getMenu();
-        MenuItem menuItem = menu.getItem(activityNum);
-        menuItem.setChecked(true);
+        if (bottomNavigationViewEx != null) {
+            BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
+            Menu menu = bottomNavigationViewEx.getMenu();
+            MenuItem menuItem = menu.getItem(activityNum);
+            menuItem.setChecked(true);
+        }
+
     }
 
 
