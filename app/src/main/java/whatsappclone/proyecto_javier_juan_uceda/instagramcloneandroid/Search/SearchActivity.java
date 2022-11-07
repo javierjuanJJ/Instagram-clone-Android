@@ -1,17 +1,19 @@
-package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid;
+package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Search;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ParentActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
 
-public class ProfileActivity extends ParentActivity {
+public class SearchActivity extends ParentActivity {
 
-    private static final String TAG = ProfileActivity.class.getSimpleName();
+    private static final String TAG = SearchActivity.class.getSimpleName();
     private BottomNavigationView bottomNavigationView;
-    private static final int ACTIVITY_NUM = 1;
+    private static final int ACTIVITY_NUM = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

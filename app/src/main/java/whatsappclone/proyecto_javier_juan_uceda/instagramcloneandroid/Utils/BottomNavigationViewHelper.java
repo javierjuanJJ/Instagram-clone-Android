@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.HomeActivity;
-import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.LikesActivity;
-import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ProfileActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Home.HomeActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Likes.LikesActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Profile.ProfileActivity;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
-import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.SearchActivity;
-import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ShareActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Search.SearchActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Share.ShareActivity;
 
 public class BottomNavigationViewHelper {
 

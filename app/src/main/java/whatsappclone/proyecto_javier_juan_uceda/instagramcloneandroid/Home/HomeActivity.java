@@ -1,12 +1,12 @@
-package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid;
-
-import androidx.appcompat.app.AppCompatActivity;
+package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Home;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ParentActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
 
 public class HomeActivity extends ParentActivity {

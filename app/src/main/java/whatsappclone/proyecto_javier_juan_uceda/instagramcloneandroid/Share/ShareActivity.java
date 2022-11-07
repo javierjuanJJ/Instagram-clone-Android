@@ -1,17 +1,19 @@
-package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid;
+package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Share;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ParentActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
 
-public class LikesActivity extends ParentActivity {
+public class ShareActivity extends ParentActivity {
 
-    private static final String TAG = LikesActivity.class.getSimpleName();
+    private static final String TAG = ShareActivity.class.getSimpleName();
     private BottomNavigationView bottomNavigationView;
-    private static final int ACTIVITY_NUM = 3;
+    private static final int ACTIVITY_NUM = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
