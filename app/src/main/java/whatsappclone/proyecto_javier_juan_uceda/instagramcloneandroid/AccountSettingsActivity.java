@@ -1,5 +1,7 @@
 package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid;
 
+import static whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper.setupBottomNavigationView;
+
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
@@ -19,6 +21,8 @@ public class AccountSettingsActivity extends ParentActivity {
     private SectionsStatePagerAdapter pagerAdapter;
     private ViewPager mViewPager;
     private RelativeLayout mRelativeLayout;
+
+    private static final int ACTIVITY_NUM = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class AccountSettingsActivity extends ParentActivity {
         mRelativeLayout = findViewById(R.id.relLayout1);
 
         setupFragments();
+        setupBottomNavigationView();
 
     }
 

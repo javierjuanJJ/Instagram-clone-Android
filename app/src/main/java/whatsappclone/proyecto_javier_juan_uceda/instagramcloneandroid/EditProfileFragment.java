@@ -24,7 +24,15 @@ class EditProfileFragment extends Fragment {
 
         mProfilePhoto = view.findViewById(R.id.profile_photo);
 
-        initImageLoader();
+        //back arrow for navigating back to "ProfileActivity"
+        ImageView backArrow = view.findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: navigating back to ProfileActivity");
+                getActivity().finish();
+            }
+        });
 
         setProfileImage();
 

@@ -24,6 +24,10 @@ public class BottomNavigationViewHelper {
         Log.d(TAG, "setupBottomNavigationView: Setting up BottomNavigationView");
     }
 
+    public static void setupBottomNavigationView(){
+        Log.d(TAG, "setupBottomNavigationView: Setting up BottomNavigationView");
+    }
+
     public static void enableNavigation(final Context context, BottomNavigationView view){
         view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

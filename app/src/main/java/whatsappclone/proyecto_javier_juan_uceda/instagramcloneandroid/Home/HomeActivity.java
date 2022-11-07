@@ -7,9 +7,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ParentActivity;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.UniversalImageLoader;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
 
 public class HomeActivity extends ParentActivity {
@@ -31,8 +33,15 @@ public class HomeActivity extends ParentActivity {
         Log.d(TAG, "onCreate: starting.");
         bottomNavigationView = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationView);
+        initImageLoader();
         m1(TAG, ACTIVITY_NUM);
         setupViewPager();
+
+    }
+
+    private void initImageLoader() {
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
 
     private void setupViewPager() {
