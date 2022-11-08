@@ -24,6 +24,7 @@
     <!-- strings -->
     <string name="gallery">GALLERY</string>
     <string name="photo">PHOTO</string>
+    <string name="string_open_camera">Open Camera</string>
 
     <!-- Intent Extras -->
     <string name="calling_activity">calling_activity</string>

@@ -13,14 +13,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableLayout
+            <com.google.android.material.tabs.TabLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tabsBottom"
                 android:background="@color/white">
 
 
-            </TableLayout>
+            </com.google.android.material.tabs.TabLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 

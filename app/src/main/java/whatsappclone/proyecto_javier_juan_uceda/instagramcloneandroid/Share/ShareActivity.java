@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Home.SectionsPagerAdapter;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ParentActivity;
@@ -46,17 +47,17 @@ public class ShareActivity extends ParentActivity {
 
     private void setupViewPager() {
         SectionsPagerAdapter adapter =  new SectionsPagerAdapter(getSupportFragmentManager());
-//        adapter.addFragment(new GalleryFragment());
-//        adapter.addFragment(new PhotoFragment());
-//
-//        mViewPager = (ViewPager) findViewById(R.id.container);
-//        mViewPager.setAdapter(adapter);
-//
-//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabsBottom);
-//        tabLayout.setupWithViewPager(mViewPager);
-//
-//        tabLayout.getTabAt(0).setText(getString(R.string.gallery));
-//        tabLayout.getTabAt(1).setText(getString(R.string.photo));
+        adapter.addFragment(new GalleryFragment());
+        adapter.addFragment(new PhotoFragment());
+
+        mViewPager = findViewById(R.id.container);
+        mViewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.tabsBottom);
+        tabLayout.setupWithViewPager(mViewPager);
+
+        tabLayout.getTabAt(0).setText(getString(R.string.gallery));
+        tabLayout.getTabAt(1).setText(getString(R.string.photo));
 
     }
 
