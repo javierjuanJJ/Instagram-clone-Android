@@ -45,6 +45,20 @@ public class ShareActivity extends ParentActivity {
         }
     }
 
+    /**
+     * return the current tab number
+     * 0 = GalleryFragment
+     * 1 = PhotoFragment
+     * @return
+     */
+    public int getCurrentTabNumber(){
+        return mViewPager.getCurrentItem();
+    }
+
+    /**
+     * setup viewpager for manager the tabs
+     */
+
     private void setupViewPager() {
         SectionsPagerAdapter adapter =  new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new GalleryFragment());
