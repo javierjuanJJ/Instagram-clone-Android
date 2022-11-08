@@ -4,6 +4,7 @@ import static whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Uti
 
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +52,17 @@ public class AccountSettingsActivity extends ParentActivity {
 
         setupFragments();
         setupBottomNavigationView();
+        getIncomingIntent();
 
+    }
+
+    private void getIncomingIntent() {
+        Intent intent = getIntent();
+
+        if(intent.hasExtra(getString(R.string.calling_activity))){
+            Log.d(TAG, "getIncomingIntent: received incoming intent from " + getString(R.string.profile_activity));
+            setViewPager(pagerAdapter.getFragmentNumber(getString(R.string.edit_profile_fragment)));
+        }
     }
 
     private void setupFragments() {
