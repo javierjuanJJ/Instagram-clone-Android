@@ -21,6 +21,10 @@
     <string name="field_description">description</string>
     <string name="field_phone_number">phone_number</string>
 
+    <!-- strings -->
+    <string name="gallery">GALLERY</string>
+    <string name="photo">PHOTO</string>
+
     <!-- Intent Extras -->
     <string name="calling_activity">calling_activity</string>
 
