@@ -57,6 +57,16 @@ public class LoginActivity extends ParentActivity {
         mPleaseWait.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.GONE);
 
+        linkSignUp = findViewById(R.id.link_signup);
+        linkSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: navigating to register screen");
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
         setupFirebaseAuth();
         init();
     }
@@ -131,15 +141,7 @@ public class LoginActivity extends ParentActivity {
                                 }
                             });
 
-                    linkSignUp = findViewById(R.id.link_signup);
-                    linkSignUp.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Log.d(TAG, "onClick: navigating to register screen");
-                            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                            startActivity(intent);
-                        }
-                    });
+
 
          /*
          If the user is logged in then navigate to HomeActivity and call 'finish()'

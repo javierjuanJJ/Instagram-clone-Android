@@ -74,8 +74,10 @@ public class AccountSettingsActivity extends ParentActivity {
     private void setViewPager(int fragmentNumber){
         mRelativeLayout.setVisibility(View.GONE);
         Log.d(TAG, "setViewPager: navigating to fragment #: " + fragmentNumber);
-        mViewPager.setAdapter(pagerAdapter);
-        mViewPager.setCurrentItem(fragmentNumber);
+        if (mViewPager != null) {
+            mViewPager.setAdapter(pagerAdapter);
+            mViewPager.setCurrentItem(fragmentNumber);
+        }
     }
 
     private void setupSettingsList() {

@@ -61,7 +61,8 @@ public class FirebaseMethods {
                     // signed in user can be handled in the listener.
                     if (!task.isSuccessful()) {
                        Toast.makeText(mContext, R.string.auth_failed, Toast.LENGTH_SHORT).show();
-
+                        Log.e("errorFirebase", task.getException().getMessage());
+                       task.getException().printStackTrace();
                     }
                     else {
                        //send verificaton email

@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.ProviderQueryResult;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +36,7 @@ import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.Use
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.UserSettings;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.FirebaseMethods;
 
-class EditProfileFragment extends Fragment implements
+public class EditProfileFragment extends Fragment implements
         ConfirmPasswordDialog.OnConfirmPasswordListener {
 
     private static final String TAG = EditProfileFragment.class.getSimpleName();
@@ -49,8 +49,8 @@ class EditProfileFragment extends Fragment implements
 
     private String userID;
     //EditProfile Fragment widgets
-    private EditText mDisplayName, mUsername, mWebsite, mDescription, mEmail, mPhoneNumber;
-    private TextView mChangeProfilePhoto;
+    private EditText mDisplayName, mWebsite, mDescription, mEmail, mPhoneNumber;
+    private TextView mChangeProfilePhoto, mUsername;
     private CircleImageView mProfilePhoto;
 
 
@@ -75,12 +75,13 @@ class EditProfileFragment extends Fragment implements
                         if(task.isSuccessful()){
                             Log.d(TAG, "User re-authenticated.");
                             ///////////////////////check to see if the email is not already present in the database
-                            mAuth.fetchProvidersForEmail(mEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<ProviderQueryResult>() {
+
+                            mAuth.fetchSignInMethodsForEmail(mEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                                 @Override
-                                public void onComplete(@NonNull Task<ProviderQueryResult> task) {
+                                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
                                     if(task.isSuccessful()){
                                         try{
-                                            if(task.getResult().getProviders().size() == 1){
+                                            if(task.getResult().getSignInMethods() != null && task.getResult().getSignInMethods().size() == 1){
                                                 Log.d(TAG, "onComplete: that email is already in use.");
                                                 Toast.makeText(getActivity(), "That email is already in use", Toast.LENGTH_SHORT).show();
                                             }
@@ -103,10 +104,10 @@ class EditProfileFragment extends Fragment implements
                                         }catch (NullPointerException e){
                                             Log.e(TAG, "onComplete: NullPointerException: "  +e.getMessage() );
                                         }
+
                                     }
                                 }
                             });
-
 
 
 
@@ -127,7 +128,7 @@ class EditProfileFragment extends Fragment implements
 
         mProfilePhoto = (CircleImageView) view.findViewById(R.id.profile_photo);
         mDisplayName = (EditText) view.findViewById(R.id.display_name);
-        mUsername = (EditText) view.findViewById(R.id.username);
+        mUsername = view.findViewById(R.id.username);
         mWebsite = (EditText) view.findViewById(R.id.website);
         mDescription = (EditText) view.findViewById(R.id.description);
         mEmail = (EditText) view.findViewById(R.id.email);

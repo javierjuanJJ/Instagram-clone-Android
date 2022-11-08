@@ -28,7 +28,6 @@ import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.Fire
 public class RegisterActivity extends ParentActivity {
    private static final String TAG = RegisterActivity.class.getSimpleName();
 
-   private Context mContext;
    private String email, username, password;
    private EditText mEmail, mPassword, mUsername;
    private TextView loadingPleaseWait;
@@ -45,9 +44,6 @@ public class RegisterActivity extends ParentActivity {
    private DatabaseReference myRef;
 
    private String append = "";
-
-   public RegisterActivity() {
-   }
 
    @Override
    protected void onCreate(@Nullable Bundle savedInstanceState) {
