@@ -12,12 +12,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ParentActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ProfileFragment;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.UniversalImageLoader;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
@@ -44,18 +46,29 @@ public class ProfileActivity extends ParentActivity {
         Log.d(TAG, "onCreate: starting.");
         bottomNavigationView = findViewById(R.id.bottomNavViewBar);
 
-        setupBottomNavigationView(bottomNavigationView);
-        m1(TAG, ACTIVITY_NUM);
-        setupBottomNavigationView(bottomNavigationView);
-        setupToolbar();
+//        setupBottomNavigationView(bottomNavigationView);
+//        m1(TAG, ACTIVITY_NUM);
+//        setupBottomNavigationView(bottomNavigationView);
+//        setupToolbar();
+//
+//        setupActivityWidgets();
+//        setProfileImage();
 
-        setupActivityWidgets();
-        setProfileImage();
+        init();
 
-        tempGridSetup();
+        //tempGridSetup();
 
     }
 
+    private void init(){
+        Log.d(TAG, "init: inflating " + getString(R.string.profile_fragment));
+
+        ProfileFragment fragment = new ProfileFragment();
+        FragmentTransaction transaction = ProfileActivity.this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(getString(R.string.profile_fragment));
+        transaction.commit();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.profile_menu, menu);
