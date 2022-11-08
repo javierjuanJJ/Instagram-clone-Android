@@ -153,7 +153,7 @@ public class RegisterActivity extends ParentActivity {
 
                      Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();
 
-
+                     mAuth.signOut();
                      //add new user_account_settings to the database
                   }
 
@@ -162,6 +162,8 @@ public class RegisterActivity extends ParentActivity {
 
                   }
                });
+
+               finish();
 
             } else {
                // User is signed out
