@@ -1,5 +1,7 @@
 package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Likes;
 
+import static whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper.setupBottomNavigationView;
+
 import android.os.Bundle;
 import android.util.Log;
 
@@ -18,7 +20,7 @@ public class LikesActivity extends ParentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_main);
 
         setUI();
 
@@ -27,8 +29,8 @@ public class LikesActivity extends ParentActivity {
     private void setUI() {
         Log.d(TAG, "onCreate: starting.");
         bottomNavigationView = findViewById(R.id.bottomNavViewBar);
-        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationView);
+        setupBottomNavigationView(bottomNavigationView);
         m1(TAG, ACTIVITY_NUM);
-        //setupBottomNavigationView();
+        setupBottomNavigationView();
     }
 }
