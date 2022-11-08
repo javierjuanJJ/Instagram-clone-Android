@@ -88,6 +88,20 @@ public class FirebaseMethods {
               .setValue(username);
    }
 
+   /**
+    * update the email in the 'user's' node
+    * @param email
+    */
+   public void updateEmail(String email){
+      Log.d(TAG, "updateEmail: upadting email to: " + email);
+
+      myRef.child(mContext.getString(R.string.dbname_users))
+              .child(userID)
+              .child(mContext.getString(R.string.field_email))
+              .setValue(email);
+
+   }
+
    public void addNewUser(String email, String username, String description, String website, String profile_photo){
 
       User user = new User( userID,  1,  email,  StringManipulation.condenseUsername(username) );
