@@ -8,12 +8,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.FirebaseMethods;
 
 public class RegisterActivity extends ParentActivity {
    private static final String TAG = RegisterActivity.class.getSimpleName();
@@ -25,9 +33,19 @@ public class RegisterActivity extends ParentActivity {
    private Button btnRegister;
    private ProgressBar mProgressBar;
 
+   private FirebaseMethods firebaseMethods;
+
    //firebase
    private FirebaseAuth mAuth;
    private FirebaseAuth.AuthStateListener mAuthListener;
+
+   private FirebaseDatabase mFirebaseDatabase;
+   private DatabaseReference myRef;
+
+   private String append = "";
+
+   public RegisterActivity() {
+   }
 
    @Override
    protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,8 +57,38 @@ public class RegisterActivity extends ParentActivity {
 
    private void setUI() {
       Log.d(TAG, "onCreate: started.");
+      firebaseMethods = new FirebaseMethods(mContext);
       initWidgets();
       setupFirebaseAuth();
+      init();
+   }
+
+
+   private void init(){
+      btnRegister.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            email = mEmail.getText().toString();
+            username = mUsername.getText().toString();
+            password = mPassword.getText().toString();
+
+            if(checkInputs(email, username, password)){
+               mProgressBar.setVisibility(View.VISIBLE);
+               loadingPleaseWait.setVisibility(View.VISIBLE);
+
+               firebaseMethods.registerNewEmail(email, password, username);
+            }
+         }
+      });
+   }
+
+   private boolean checkInputs(String email, String username, String password){
+      Log.d(TAG, "checkInputs: checking inputs for null values.");
+      if(email.equals("") || username.equals("") || password.equals("")){
+         Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+         return false;
+      }
+      return true;
    }
 
 
@@ -53,6 +101,8 @@ public class RegisterActivity extends ParentActivity {
       mProgressBar = findViewById(R.id.progressBar);
       loadingPleaseWait = findViewById(R.id.loadingPleaseWait);
       mPassword = findViewById(R.id.input_password);
+      mUsername = findViewById(R.id.input_username);
+      btnRegister = findViewById(R.id.btn_register);
       mContext = RegisterActivity.this;
       mProgressBar.setVisibility(View.GONE);
       loadingPleaseWait.setVisibility(View.GONE);
@@ -75,6 +125,8 @@ public class RegisterActivity extends ParentActivity {
       Log.d(TAG, "setupFirebaseAuth: setting up firebase auth.");
 
       mAuth = FirebaseAuth.getInstance();
+      mFirebaseDatabase = FirebaseDatabase.getInstance();
+      myRef = mFirebaseDatabase.getReference();
 
       mAuthListener = new FirebaseAuth.AuthStateListener() {
          @Override
@@ -84,6 +136,28 @@ public class RegisterActivity extends ParentActivity {
             if (user != null) {
                // User is signed in
                Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+               myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                  @Override
+                  public void onDataChange(DataSnapshot dataSnapshot) {
+                     //1st check: Make sure the username is not already in use
+                     if(firebaseMethods.checkIfUsernameExists(username, dataSnapshot)){
+                        append = myRef.push().getKey().substring(3,10);
+                        Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
+                     }
+                     username = username = append;
+
+                     //add new user to the database
+
+                     //add new user_account_settings to the database
+                  }
+
+                  @Override
+                  public void onCancelled(DatabaseError databaseError) {
+
+                  }
+               });
+
             } else {
                // User is signed out
                Log.d(TAG, "onAuthStateChanged:signed_out");
