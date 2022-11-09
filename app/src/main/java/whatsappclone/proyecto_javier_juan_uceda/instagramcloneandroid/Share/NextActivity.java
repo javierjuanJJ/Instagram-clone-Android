@@ -36,12 +36,13 @@ public class NextActivity extends AppCompatActivity {
 
     //vars
     private String mAppend = "file:/";
+    private int imageCount = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next);
-
+        mFirebaseMethods = new FirebaseMethods(NextActivity.this);
         Log.d(TAG, "onCreate: got the chosen image: " + getIntent().getStringExtra(getString(R.string.selected_image)));
         setupFirebaseAuth();
 
@@ -76,6 +77,23 @@ public class NextActivity extends AppCompatActivity {
         UniversalImageLoader.setImage(intent.getStringExtra(getString(R.string.selected_image)), image, null, mAppend);
     }
 
+    private void someMethod(){
+        /*
+            Step 1)
+            Create a data model for Photos
+            Step 2)
+            Add properties to the Photo Objects (caption, date, imageUrl, photo_id, tags, user_id)
+            Step 3)
+            Count the number of photos that the user already has.
+            Step 4)
+            a) Upload the photo to Firebase Storage
+            b) insert into 'photos' node
+            c) insert into 'user_photos' node
+         */
+
+
+    }
+
      /*
     ------------------------------------ Firebase ---------------------------------------------
      */
@@ -88,6 +106,7 @@ public class NextActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
+        Log.d(TAG, "onDataChange: image count: " + imageCount);
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -111,7 +130,8 @@ public class NextActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-
+                imageCount = mFirebaseMethods.getImageCount(dataSnapshot);
+                Log.d(TAG, "onDataChange: image count: " + imageCount);
             }
 
             @Override
