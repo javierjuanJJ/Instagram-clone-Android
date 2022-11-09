@@ -24,6 +24,8 @@ public class SearchActivity extends ParentActivity {
 
     }
 
+    
+
     private void setUI() {
         Log.d(TAG, "onCreate: starting.");
         bottomNavigationView = findViewById(R.id.bottomNavViewBar);

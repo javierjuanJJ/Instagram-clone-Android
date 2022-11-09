@@ -1,5 +1,6 @@
 package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Dialogs.Co
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.User;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.UserAccountSettings;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.UserSettings;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Share.ShareActivity;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.FirebaseMethods;
 
 public class EditProfileFragment extends Fragment implements
@@ -177,6 +179,16 @@ public class EditProfileFragment extends Fragment implements
         mDescription.setText(settings.getDescription());
         mEmail.setText(userSettings.getUser().getEmail());
         mPhoneNumber.setText(String.valueOf(userSettings.getUser().getPhone_number()));
+
+        mChangeProfilePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: changing profile photo");
+                Intent intent = new Intent(getActivity(), ShareActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //268435456
+                getActivity().startActivity(intent);
+            }
+        });
 
 
     }
