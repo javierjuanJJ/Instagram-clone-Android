@@ -21,7 +21,7 @@ import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.Fire
 public class AccountSettingsActivity extends ParentActivity {
     private static final String TAG = AccountSettingsActivity.class.getSimpleName();
 
-    private SectionsStatePagerAdapter pagerAdapter;
+    public SectionsStatePagerAdapter pagerAdapter;
     private ViewPager mViewPager;
     private RelativeLayout mRelativeLayout;
 
@@ -80,7 +80,7 @@ public class AccountSettingsActivity extends ParentActivity {
         pagerAdapter.addFragment(new SignOutFragment(), getString(R.string.sign_out_fragment)); //fragment 1
     }
 
-    private void setViewPager(int fragmentNumber){
+    public void setViewPager(int fragmentNumber){
         mRelativeLayout.setVisibility(View.GONE);
         Log.d(TAG, "setViewPager: navigating to fragment #: " + fragmentNumber);
         if (mViewPager != null) {

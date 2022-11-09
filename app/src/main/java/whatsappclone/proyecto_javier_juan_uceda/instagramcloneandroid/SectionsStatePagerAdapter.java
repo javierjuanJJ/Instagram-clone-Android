@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-class SectionsStatePagerAdapter extends FragmentStatePagerAdapter {
+public class SectionsStatePagerAdapter extends FragmentStatePagerAdapter {
 
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final HashMap<Fragment, Integer> mFragments = new HashMap<>();
