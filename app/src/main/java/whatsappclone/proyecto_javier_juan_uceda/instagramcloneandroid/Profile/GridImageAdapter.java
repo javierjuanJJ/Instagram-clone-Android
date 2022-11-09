@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.SqaureImageView;
 
-class GridImageAdapter extends ArrayAdapter<String> {
+public class GridImageAdapter extends ArrayAdapter<String> {
 
     private Context mContext;
     private LayoutInflater mInflater;
