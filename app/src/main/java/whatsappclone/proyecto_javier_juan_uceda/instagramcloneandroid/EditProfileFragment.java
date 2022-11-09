@@ -130,7 +130,7 @@ public class EditProfileFragment extends Fragment implements
         mDisplayName = (EditText) view.findViewById(R.id.display_name);
         mUsername = view.findViewById(R.id.username);
         mWebsite = (EditText) view.findViewById(R.id.website);
-        mDescription = (EditText) view.findViewById(R.id.description);
+        mDescription = (EditText) view.findViewById(R.id.caption);
         mEmail = (EditText) view.findViewById(R.id.email);
         mPhoneNumber = (EditText) view.findViewById(R.id.phoneNumber);
         mChangeProfilePhoto = (TextView) view.findViewById(R.id.changeProfilePhoto);
