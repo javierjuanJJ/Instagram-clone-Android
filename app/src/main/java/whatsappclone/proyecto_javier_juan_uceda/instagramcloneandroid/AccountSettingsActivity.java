@@ -5,6 +5,7 @@ import static whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Uti
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -62,14 +63,24 @@ public class AccountSettingsActivity extends ParentActivity {
         Intent intent = getIntent();
 
         //if there is an imageUrl attached as an extra, then it was chosen from the gallery/photo fragment
-        if(intent.hasExtra(getString(R.string.selected_image))){
+        if(intent.hasExtra(getString(R.string.selected_image))
+                || intent.hasExtra(getString(R.string.selected_bitmap))){
             Log.d(TAG, "getIncomingIntent: New incoming imgUrl");
             if(intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.edit_profile_fragment))){
 
                 //set the new profile picture
-                FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingsActivity.this);
-                firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
-                        intent.getStringExtra(getString(R.string.selected_image)));
+                if(intent.hasExtra(getString(R.string.selected_image))){
+                    //set the new profile picture
+                    FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingsActivity.this);
+                    firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
+                            intent.getStringExtra(getString(R.string.selected_image)), null);
+                }
+                else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+                    //set the new profile picture
+                    FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingsActivity.this);
+                    firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
+                            null,(Bitmap) intent.getParcelableExtra(getString(R.string.selected_bitmap)));
+                }
             }
         }
     }

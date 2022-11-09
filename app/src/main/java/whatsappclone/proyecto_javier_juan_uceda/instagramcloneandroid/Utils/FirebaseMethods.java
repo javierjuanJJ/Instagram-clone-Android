@@ -64,7 +64,7 @@ public class FirebaseMethods {
       }
    }
 
-   public void uploadNewPhoto(final String photoType, final String caption, final int count, final String imgUrl){
+   public void uploadNewPhoto(final String photoType, final String caption, final int count, final String imgUrl,Bitmap bm){
       Log.d(TAG, "uploadNewPhoto: attempting to uplaod new photo.");
 
       //case1) new photo
@@ -77,7 +77,9 @@ public class FirebaseMethods {
 
 
          //convert image url to bitmap
-         Bitmap bm = ImageManager.getBitmap(imgUrl);
+         if(bm == null){
+            bm = ImageManager.getBitmap(imgUrl);
+         }
          byte[] bytes = ImageManager.getBytesFromBitmap(bm, 100);
 
          UploadTask uploadTask = null;
@@ -126,16 +128,14 @@ public class FirebaseMethods {
       else if(photoType.equals(mContext.getString(R.string.profile_photo))){
          Log.d(TAG, "uploadNewPhoto: uploading new PROFILE photo");
 
-         ((AccountSettingsActivity)mContext).setViewPager(
-                 ((AccountSettingsActivity) mContext).pagerAdapter.getFragmentNumber(mContext.getString(R.string.edit_profile_fragment))
-         );
-
          String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
          StorageReference storageReference = mStorageReference
                  .child(FilePaths.FIREBASE_IMAGE_STORAGE + "/" + user_id + "/profile_photo");
 
          //convert image url to bitmap
-         Bitmap bm = ImageManager.getBitmap(imgUrl);
+         if(bm == null){
+            bm = ImageManager.getBitmap(imgUrl);
+         }
          byte[] bytes = ImageManager.getBytesFromBitmap(bm, 100);
 
          UploadTask uploadTask = null;
@@ -154,7 +154,10 @@ public class FirebaseMethods {
                //insert into 'user_account_settings' node
                setProfilePhoto(firebaseUrl.toString());
 
-
+               ((AccountSettingsActivity)mContext).setViewPager(
+                       ((AccountSettingsActivity)mContext).pagerAdapter
+                               .getFragmentNumber(mContext.getString(R.string.edit_profile_fragment))
+               );
             }
          }).addOnFailureListener(new OnFailureListener() {
             @Override

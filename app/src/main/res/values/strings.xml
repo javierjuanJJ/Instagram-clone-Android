@@ -38,6 +38,7 @@
     <string name="calling_activity">calling_activity</string>
     <string name="selected_image">selected_image</string>
     <string name="return_to_fragment">return_to_fragment</string>
+    <string name="selected_bitmap">selected_bitmap</string>
 
     <!-- dialog names -->
     <string name="confirm_password_dialog">ConfirmPaswordDialog</string>
