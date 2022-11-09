@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -19,7 +18,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import java.util.ArrayList;
 
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
-import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.SqaureImageView;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.SquareImageView;
 
 public class GridImageAdapter extends ArrayAdapter<String> {
 
@@ -39,7 +38,7 @@ public class GridImageAdapter extends ArrayAdapter<String> {
     }
 
     private static class ViewHolder{
-        SqaureImageView image;
+        SquareImageView image;
         ProgressBar mProgressBar;
     }
 

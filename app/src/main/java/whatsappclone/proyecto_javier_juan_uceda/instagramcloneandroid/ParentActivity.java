@@ -19,7 +19,7 @@ public class ParentActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         if (bottomNavigationViewEx != null) {
-            BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
+            BottomNavigationViewHelper.enableNavigation(mContext, this, bottomNavigationViewEx);
             Menu menu = bottomNavigationViewEx.getMenu();
             MenuItem menuItem = menu.getItem(activityNum);
             menuItem.setChecked(true);

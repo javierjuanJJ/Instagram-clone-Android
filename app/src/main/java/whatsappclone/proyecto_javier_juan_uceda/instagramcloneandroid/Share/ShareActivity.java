@@ -3,6 +3,8 @@ package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Share;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
@@ -35,9 +37,12 @@ public class ShareActivity extends ParentActivity {
 
     private void setUI() {
         Log.d(TAG, "onCreate: starting.");
-//        bottomNavigationView = findViewById(R.id.bottomNavViewBar);
-//        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationView);
-//        m1(TAG, ACTIVITY_NUM);
+        BottomNavigationView bottomNavigationViewEx = (BottomNavigationView) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(mContext, this,bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
         if(checkPermissionsArray(Permissions.PERMISSIONS)){
             setupViewPager();
         }else{
