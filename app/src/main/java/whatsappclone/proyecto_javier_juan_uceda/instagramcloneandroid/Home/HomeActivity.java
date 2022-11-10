@@ -127,7 +127,7 @@ public class HomeActivity extends ParentActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setIcon(R.mipmap.ic_camera);
-        tabLayout.getTabAt(1).setIcon(R.mipmap.ic_action_name);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_instagram);
         tabLayout.getTabAt(2).setIcon(R.mipmap.ic_arrow);
     }
 }
