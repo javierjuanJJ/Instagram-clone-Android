@@ -1,6 +1,7 @@
 package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Search;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,6 +30,7 @@ import java.util.Locale;
 
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.User;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ParentActivity;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Profile.ProfileActivity;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.UserListAdapter;
@@ -131,6 +133,10 @@ public class SearchActivity extends ParentActivity {
 
                 //navigate to profile activity
 
+                Intent intent =  new Intent(SearchActivity.this, ProfileActivity.class);
+                intent.putExtra(getString(R.string.calling_activity), getString(R.string.search_activity));
+                intent.putExtra(getString(R.string.intent_user), mUserList.get(position));
+                startActivity(intent);
             }
         });
     }

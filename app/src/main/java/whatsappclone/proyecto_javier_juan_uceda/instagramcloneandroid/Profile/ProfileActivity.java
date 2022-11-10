@@ -2,6 +2,7 @@ package whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Profile;
 
 import static whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper.setupBottomNavigationView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
@@ -24,6 +26,7 @@ import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ProfileFra
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.UniversalImageLoader;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.ViewProfileFragment;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ViewCommentsFragment;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ViewPostFragment;
 
@@ -83,11 +86,33 @@ public class ProfileActivity extends ParentActivity implements
     private void init(){
         Log.d(TAG, "init: inflating " + getString(R.string.profile_fragment));
 
-        ProfileFragment fragment = new ProfileFragment();
-        FragmentTransaction transaction = ProfileActivity.this.getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(getString(R.string.profile_fragment));
-        transaction.commit();
+        Intent intent = getIntent();
+        if(intent.hasExtra(getString(R.string.calling_activity))){
+            Log.d(TAG, "init: searching for user object attached as intent extra");
+            if(intent.hasExtra(getString(R.string.intent_user))){
+                Log.d(TAG, "init: inflating view profile");
+                ViewProfileFragment fragment = new ViewProfileFragment();
+                Bundle args = new Bundle();
+                args.putParcelable(getString(R.string.intent_user),
+                        intent.getParcelableExtra(getString(R.string.intent_user)));
+                fragment.setArguments(args);
+
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, fragment);
+                transaction.addToBackStack(getString(R.string.view_profile_fragment));
+                transaction.commit();
+            }else{
+                Toast.makeText(mContext, "something went wrong", Toast.LENGTH_SHORT).show();
+            }
+
+        }else{
+            Log.d(TAG, "init: inflating Profile");
+            ProfileFragment fragment = new ProfileFragment();
+            FragmentTransaction transaction = ProfileActivity.this.getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(getString(R.string.profile_fragment));
+            transaction.commit();
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
