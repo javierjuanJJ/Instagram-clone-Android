@@ -26,8 +26,9 @@ import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.UniversalI
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ViewPostFragment;
 
-public class ProfileActivity extends ParentActivity implements ProfileFragment.OnGridImageSelectedListener {
-
+public class ProfileActivity extends ParentActivity implements
+        ProfileFragment.OnGridImageSelectedListener ,
+        ViewPostFragment.OnCommentThreadSelectedListener{
     private static final String TAG = ProfileActivity.class.getSimpleName();
     private BottomNavigationView bottomNavigationView;
     private static final int ACTIVITY_NUM = 1;
@@ -43,6 +44,12 @@ public class ProfileActivity extends ParentActivity implements ProfileFragment.O
         setUI();
 
     }
+
+    @Override
+    public void onCommentThreadSelectedListener(Photo photo) {
+
+    }
+
 
     private void setUI() {
         Log.d(TAG, "onCreate: starting.");
