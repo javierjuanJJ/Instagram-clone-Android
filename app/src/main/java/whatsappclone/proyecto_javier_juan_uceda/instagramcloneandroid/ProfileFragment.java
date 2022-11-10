@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.Comment;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.Like;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.Photo;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.UserAccountSettings;
@@ -153,6 +154,18 @@ public class ProfileFragment extends Fragment {
                     photo.setUser_id(objectMap.get(getString(R.string.field_user_id)).toString());
                     photo.setDate_created(objectMap.get(getString(R.string.field_date_created)).toString());
                     photo.setImage_path(objectMap.get(getString(R.string.field_image_path)).toString());
+
+                    ArrayList<Comment> comments = new ArrayList<Comment>();
+                    for (DataSnapshot dSnapshot : singleSnapshot
+                            .child(getString(R.string.field_comments)).getChildren()){
+                        Comment comment = new Comment();
+                        comment.setUser_id(dSnapshot.getValue(Comment.class).getUser_id());
+                        comment.setComment(dSnapshot.getValue(Comment.class).getComment());
+                        comment.setDate_created(dSnapshot.getValue(Comment.class).getDate_created());
+                        comments.add(comment);
+                    }
+
+                    photo.setComments(comments);
 
                     List<Like> likesList = new ArrayList<Like>();
                     for (DataSnapshot dSnapshot : singleSnapshot
