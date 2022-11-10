@@ -18,13 +18,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Models.Photo;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ParentActivity;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ProfileFragment;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.UniversalImageLoader;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ViewPostFragment;
 
-public class ProfileActivity extends ParentActivity {
+public class ProfileActivity extends ParentActivity implements ProfileFragment.OnGridImageSelectedListener {
 
     private static final String TAG = ProfileActivity.class.getSimpleName();
     private BottomNavigationView bottomNavigationView;
@@ -136,4 +138,19 @@ public class ProfileActivity extends ParentActivity {
         profilePhoto = (ImageView) findViewById(R.id.profile_photo);
     }
 
+    @Override
+    public void onGridImageSelected(Photo photo, int activityNumber) {
+        Log.d(TAG, "onGridImageSelected: selected an image gridview: " + photo.toString());
+
+        ViewPostFragment fragment = new ViewPostFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(getString(R.string.photo), photo);
+        args.putInt(getString(R.string.activity_number), activityNumber);
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction  = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(getString(R.string.view_post_fragment));
+        transaction.commit();
+    }
 }
