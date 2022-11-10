@@ -24,6 +24,7 @@ import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ProfileFra
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.R;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.UniversalImageLoader;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.Utils.BottomNavigationViewHelper;
+import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ViewCommentsFragment;
 import whatsappclone.proyecto_javier_juan_uceda.instagramcloneandroid.ViewPostFragment;
 
 public class ProfileActivity extends ParentActivity implements
@@ -47,7 +48,17 @@ public class ProfileActivity extends ParentActivity implements
 
     @Override
     public void onCommentThreadSelectedListener(Photo photo) {
+        Log.d(TAG, "onCommentThreadSelectedListener:  selected a comment thread");
 
+        ViewCommentsFragment fragment = new ViewCommentsFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(getString(R.string.photo), photo);
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(getString(R.string.view_comments_fragment));
+        transaction.commit();
     }
 
 
